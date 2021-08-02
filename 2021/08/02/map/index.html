@@ -18,9 +18,25 @@
   <meta name="author" content="Kero Turing">
   <meta name="keywords" content="">
   
-  <title>标签 ~ Kero</title>
+  <title>map ~ Kero</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -147,17 +163,50 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签">
+            <span class="h2" id="subtitle" title="map">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-02 22:53" pubdate>
+        2021年8月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      663 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -166,24 +215,92 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center tagcloud">
-  <a href="/tags/develop/" style="font-size: 15px; color: #bbe">develop</a> <a href="/tags/%E4%BB%8A%E5%A4%A9%E5%AD%A6%E4%BA%86%E5%95%A5/" style="font-size: 15px; color: #bbe">今天学了啥</a>
-</div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">map</h1>
+            
+            <div class="markdown-body">
+              <p>#STL应用之map</p>
+<p>##Map是啥？</p>
+<p>Map就是从键（key）到值（value）的映射。因为重载了[]运算符，map像是数组的“高级版”。[1]</p>
+<p>Map是STL的一个关联容器，它提供一对一（其中第一个可以称为关键字，每个关键字只能在map中出现一次，第二个可能称为该关键字的值）的数据 处理能力，由于这个特性，它完成有可能在我们处理一对一数据的时候，在编程上提供快速通道。这里说下map内部数据的组织，map内部自建一颗红黑树(一 种非严格意义上的平衡二叉树)，这颗树具有对数据自动排序的功能，所以在map内部所有的数据都是有序的。</p>
+<p>所以可以说map的底层是tree。<br>map的key不可以重复，但value可以。而在multimap中key是可以重复的。</p>
+<p>Map的应用</p>
+<p>开始当然需要#include <map>啦<br>在赋值之前，我们需要map&lt;string, int&gt; dict;<br>int声明整型变量，string声明字符串，相信傻瓜都知道<br>这两者取决你赋值的数据类型和谁对应key和value<br>之后插入数据有多种方法<br>•我最喜欢用的婴儿方法<br>dict[“key”]=value<br>•杜老师教的需要打多一点字的方法<br>dict.insert(map&lt;string, int&gt;::value_type(“key”, value))<br>•CSDN上看的用数组插入的方法<br>map&lt;int, string&gt; mapStudent; mapStudent[1] = “student_one”;<br>•我忘了<br>插入数据后，能干点什么？</p>
+<p>在？看看map<br>bool empty()查询map是否为空<br>size_t size()查询map中键值对的数量<br>count()<br>可以这样用：当你需要知道一个key的value，却不知道这个key是否存在时，可以用count返回元素出现的次数，再根据有无继续操作<br>（其实find好像也可以这样用哒！返回1或0）<br>（反正我学了这个函数就要写进blog里！）<br>枚举整个map容器<br>for (map&lt;string, int&gt;::iterator it = dict.begin(); it != dict.end(); ++it)<br>•查找，删除，交换等…<br>课里没用上…<br>样例代码</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20</p>
+<p> #include <map><br>#include <string><br>using namespace std;<br>int main()<br>{<br>  map&lt;string, int&gt; dict;<br>  dict[“王大狗”]=1;<br>  dict[“王二狗”] = 2;<br>  dict.insert(map&lt;string, int&gt;::value_type(“李狗蛋”, 1));<br>  if (dict.count(“王大狗”)) {<br>      cout &lt;&lt; “王大狗在” &lt;&lt; dict[“王大狗”] &lt;&lt; “村” &lt;&lt; endl;<br>  }<br>  else<br>      cout &lt;&lt; “他进城打工了！” &lt;&lt; endl;<br>  cout &lt;&lt; “开始大狗枚举” &lt;&lt; endl;<br>  for (map&lt;string, int&gt;::iterator it = dict.begin(); it != dict.end(); ++it)<br>      cout &lt;&lt; it-&gt;first &lt;&lt; “在” &lt;&lt; it-&gt;second &lt;&lt; “班” &lt;&lt; endl;<br>  dict.clear();<br>  return 0;<br>}</p>
+<p>应该不用注释也能看懂~<br>习题<br>正在写，写完update，咕咕咕</p>
 
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BB%8A%E5%A4%A9%E5%AD%A6%E4%BA%86%E5%95%A5/">今天学了啥</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/08/06/works/">
+                        <span class="hidden-mobile">works</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -263,9 +380,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
