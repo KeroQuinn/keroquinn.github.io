@@ -355,9 +355,9 @@ img[lazyload] {
   --post-text-color: #2c3e50;
   --post-heading-color: #1a202c;
   --post-link-color: #D1B6E1;
-  --link-hover-color: #30a9de;
+  --link-hover-color: #9DC8C8;
   --link-hover-bg-color: #519D9E;
-  --navbar-bg-color: #58C9B9;
+  --navbar-bg-color: #519D9E;
   --navbar-text-color: #fff;
 }
 @media (prefers-color-scheme: dark) {
@@ -372,9 +372,9 @@ img[lazyload] {
     --post-text-color: #c4c6c9;
     --post-heading-color: #c4c6c9;
     --post-link-color: #D1B6E1;
-    --link-hover-color: #30a9de;
+    --link-hover-color: #9DC8C8;
     --link-hover-bg-color: #519D9E;
-    --navbar-bg-color: #58C9B9;
+    --navbar-bg-color: #519D9E;
     --navbar-text-color: #d0d0d0;
   }
   :root:not([data-user-color-scheme]) img,
@@ -454,9 +454,9 @@ img[lazyload] {
   --post-text-color: #c4c6c9;
   --post-heading-color: #c4c6c9;
   --post-link-color: #D1B6E1;
-  --link-hover-color: #30a9de;
+  --link-hover-color: #9DC8C8;
   --link-hover-bg-color: #519D9E;
-  --navbar-bg-color: #58C9B9;
+  --navbar-bg-color: #519D9E;
   --navbar-text-color: #d0d0d0;
 }
 [data-user-color-scheme='dark'] img,
@@ -1228,10 +1228,10 @@ a.fancybox:hover {
 }
 #nprogress .bar {
   height: 3px !important;
-  background-color: #29d !important;
+  background-color: #58C9B9 !important;
 }
 #nprogress .peg {
-  box-shadow: 0 0 14px #29d, 0 0 8px #29d !important;
+  box-shadow: 0 0 14px #58C9B9, 0 0 8px #58C9B9 !important;
 }
 @media (max-width: 575px) {
   #nprogress .bar {
