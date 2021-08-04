@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      706 字
+      712 字
     </span>
   
 
@@ -237,16 +237,16 @@
 <p>所以可以说map的底层是tree。<br>map的key不可以重复，但value可以。而在multimap中key是可以重复的。</p>
 <h2 id="Map的应用"><a href="#Map的应用" class="headerlink" title="Map的应用"></a><a href="#Map%E7%9A%84%E5%BA%94%E7%94%A8" title="Map的应用"></a>Map的应用</h2><p>开始当然需要<code>#include &amp;lt;map&amp;gt;</code>啦<br>在赋值之前，我们需要<code>map&amp;lt;string, int&amp;gt; dict;</code><br><del>int声明整型变量，string声明字符串，相信傻瓜都知道</del><br>这两者取决你赋值的数据类型和谁对应key和value<br>之后插入数据有多种方法</p>
 <ul>
-<li><p>  我最喜欢用的婴儿方法<br>dict[“key”]=value</p>
+<li><p>  我最喜欢用的婴儿方法<br><code>dict[“key”]=value</code></p>
 </li>
-<li><p>  杜老师教的需要打多一点字的方法<br>dict.insert(map&lt;string, int&gt;::value_type(“key”, value))</p>
+<li><p>  杜老师教的需要打多一点字的方法<br><code>dict.insert(map&amp;lt;string, int&amp;gt;::value_type(“key”, value))</code></p>
 </li>
-<li><p>  CSDN上看的用数组插入的方法<br>map&lt;int, string&gt; mapStudent; mapStudent[1] = “student_one”;</p>
+<li><p>  CSDN上看的用数组插入的方法<br><code>map&amp;lt;int, string&amp;gt; mapStudent; mapStudent[1] = “student_one”;</code></p>
 </li>
 <li><p>我忘了</p>
 <h2 id="插入数据后，能干点什么？"><a href="#插入数据后，能干点什么？" class="headerlink" title="插入数据后，能干点什么？"></a><a href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%90%8E%EF%BC%8C%E8%83%BD%E5%B9%B2%E7%82%B9%E4%BB%80%E4%B9%88%EF%BC%9F" title="插入数据后，能干点什么？"></a>插入数据后，能干点什么？</h2></li>
 </ul>
-<h3 id="在？看看map"><a href="#在？看看map" class="headerlink" title="在？看看map"></a><a href="#%E5%9C%A8%EF%BC%9F%E7%9C%8B%E7%9C%8Bmap" title="在？看看map"></a>在？看看map</h3><p>bool empty()查询map是否为空<br>size_t size()查询map中键值对的数量<br>count()<br>可以这样用：当你需要知道一个key的value，却不知道这个key是否存在时，可以用count返回元素出现的次数，再根据有无继续操作<br>（其实find好像也可以这样用哒！返回1或0）<br>（反正我学了这个函数就要写进blog里！）<br>枚举整个map容器<br>for (map&lt;string, int&gt;::iterator it = dict.begin(); it != dict.end(); ++it)</p>
+<h3 id="在？看看map"><a href="#在？看看map" class="headerlink" title="在？看看map"></a><a href="#%E5%9C%A8%EF%BC%9F%E7%9C%8B%E7%9C%8Bmap" title="在？看看map"></a>在？看看map</h3><p><code>bool empty()</code>查询map是否为空<br><code>size_t size()</code>查询map中键值对的数量<br>count()<br>可以这样用：当你需要知道一个key的value，却不知道这个key是否存在时，可以用count返回元素出现的次数，再根据有无继续操作<br>（其实find好像也可以这样用哒！返回1或0）<br>（反正我学了这个函数就要写进blog里！）<br>枚举整个map容器<br><code>for (map&amp;lt;string, int&amp;gt;::iterator it = dict.begin(); it != dict.end(); ++it)</code></p>
 <ul>
 <li><p>查找，删除，交换等…<br>课里没用上…</p>
 <h2 id="样例代码"><a href="#样例代码" class="headerlink" title="样例代码"></a><a href="#%E6%A0%B7%E4%BE%8B%E4%BB%A3%E7%A0%81" title="样例代码"></a>样例代码</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  map&lt;string, <span class="hljs-keyword">int</span>&gt; dict;<br>  dict[<span class="hljs-string">&quot;王大狗&quot;</span>]=<span class="hljs-number">1</span>;<br>  dict[<span class="hljs-string">&quot;王二狗&quot;</span>] = <span class="hljs-number">2</span>;<br>  dict.<span class="hljs-built_in">insert</span>(map&lt;string, <span class="hljs-keyword">int</span>&gt;::<span class="hljs-built_in">value_type</span>(<span class="hljs-string">&quot;李狗蛋&quot;</span>, <span class="hljs-number">1</span>));<br>  <span class="hljs-keyword">if</span> (dict.<span class="hljs-built_in">count</span>(<span class="hljs-string">&quot;王大狗&quot;</span>)) &#123;<br>      cout &lt;&lt; <span class="hljs-string">&quot;王大狗在&quot;</span> &lt;&lt; dict[<span class="hljs-string">&quot;王大狗&quot;</span>] &lt;&lt; <span class="hljs-string">&quot;村&quot;</span> &lt;&lt; endl;<br>  &#125;<br>  <span class="hljs-keyword">else</span><br>      cout &lt;&lt; <span class="hljs-string">&quot;他进城打工了！&quot;</span> &lt;&lt; endl;<br>  cout &lt;&lt; <span class="hljs-string">&quot;开始大狗枚举&quot;</span> &lt;&lt; endl;<br>  <span class="hljs-keyword">for</span> (map&lt;string, <span class="hljs-keyword">int</span>&gt;::iterator it = dict.<span class="hljs-built_in">begin</span>(); it != dict.<span class="hljs-built_in">end</span>(); ++it)<br>      cout &lt;&lt; it-&gt;first &lt;&lt; <span class="hljs-string">&quot;在&quot;</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="hljs-string">&quot;班&quot;</span> &lt;&lt; endl;<br>  dict.<span class="hljs-built_in">clear</span>();<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
